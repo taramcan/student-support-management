@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <h1>504 Renewal</h1>
+
+    <form method="POST" action="/annual_renewal">
+
+    <h1>Student Demographics</h1>
+        Student First Name: <input type="text" name="student_first_name" id = "student_first_name", required, placeholder = "Student First Name">
+        <br>
+        <br>
+        Student Last Name: <input type="text" name="student_last_name" id = "student_last_name", required, placeholder = "Student Last Name">
+        <br>
+        <br>
+        Student Date of Birth: <input type="date" name="student_dob" id = "student_dob", required, placeholder = "Student Date of Birth">
+        <br>  
+        <br>
+        Student Email:<input type="email" name="student_email" id = "student_email", required, placeholder = "Student Email Address"> 
+        <br>  
+        <br>
+        Student Grad Year: <input type="text" name="student_grad_year" id = "student_grad_year", required, placeholder = "Student Graduation Year"      >
+        <br>
+        <br>
+        Parent/Guardian First Name: <input type="text" name="parent_first_name" id = "parent_first_name", required, placeholder = "Parent First Name">
+        <br>
+        <br>
+        Parent/Guardian Last Name: <input type="text" name="parent_last_name" id = "parent_last_name", required, placeholder = "Parent Last Name">
+        <br>
+        <br>
+        Parent/Guardian Email: <input type="email" name="parent_email" id = "parent_email", required, placeholder = "Parent Email Address">
+        <br>
+        <br>
+        <h1>Dates</h1>
+        Date of Most Recent 504 Evaluation: <input type="date" name="student_most_recent_eval" id = "student_most_recent_eval", required, placeholder = "Most Recent 504 Evaluation">
+        <br>
+        <br>
+        Date of Entry to 504 Program:  <input type="date" name="student_entry_to_504_program" id = "student_entry_to_504_program", required, placeholder = "Entry to 504 Program">
+        <br>
+        <br>
+        Date of Next Scheduled Meeting:  <input type="date" name="next_meeting_date" id = "next_meeting_date", required, placeholder = "Upcoming Scheduled Meeting Date">
+        <br>
+        <br>
+        Time of Next Scheduled Meeting:  <input type="time" name="next_meeting_time" id = "next_meeting_time", required, placeholder = "Upcoming Scheduled Meeitng Time">
+        <br>
+        <br>
+
+        <h2>Documentation</h2>
+        Date of most recent documentation from Qualified Professional: <input type="date" name="date_of_most_recent_dianosis_paperwork" id = "date_of_most_recent_dianosis_paperwork", required, placeholder = "Date of Most Recent Diangnosis Paperwork">
+        <br>
+        <br>
+        Name and Title of Qualified Professional: <input type="text" name="name_and_title_of_qual_prof" id = "name_and_title_of_qual_prof", required, placeholder = "Name and Title">
+        <br>
+        <br>
+        Diagnosis: <input type="text" name="diagnosis" id = "diagnosis", required, placeholder = "Diagnosis">
+
+    <h2>Select Accommodations the Student is Eligible For:</h2>
+            <input type = "checkbox" name = "accomm1" value="accomm1">Accommodation 1</option>
+            <br>
+            <input type = "checkbox" name = "accomm2" value="accomm2">Accommodation 2</option>
+            <br>
+            <input type = "checkbox" name = "accomm3" value="accomm3">Accommodation 3</option>
+            <br>
+    Other: <input type="text" name="additional_accomms" id = "additional_accomms", required, placeholder = "Other">
+
+    <h2>Courses Where the Plan will be Implemented</h2>
+            <input type = "checkbox" name = "eng_elig" value="eng_elig">English</option>
+            <br>
+            <input type = "checkbox" name = "math_elig" value="math_elig">Math</option>
+            <br>
+            <input type = "checkbox" name = "sci_elig" value="sci_elig">Science</option>
+            <br>
+            <input type = "checkbox" name = "socstud_elig" value="socstud_elig">Social Studies</option>
+            <br>
+            <input type = "checkbox" name = "wl_elig" value="wl_elig">World Language</option>
+            <br>
+            Other: <input type="text" name="additional_elig" id = "additional_elig", required, placeholder = "Other">
+            
+    <h2>Teachers</h2>
+
+    <h2>Meeting attendees</h2>
+
+    </form>
+
+
+</html>

@@ -10,3 +10,7 @@ def index():
 @bp.route('/main_menu', methods = ['GET'])
 def main_menu():
     return(render_template('main_menu.html'))
+
+@bp.route("/annual_renewal")
+def annual_renewal():
+    return(render_template('annual_renewal.html'))
