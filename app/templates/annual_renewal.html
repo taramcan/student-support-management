@@ -1,84 +1,185 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>504 Renewal</title>
+    </head>
+
+    <body>
     <h1>504 Renewal</h1>
 
-    <form method="POST" action="/annual_renewal">
+    <form id="annualRenewalForm">
 
     <h1>Student Demographics</h1>
-        Student First Name: <input type="text" name="student_first_name" id = "student_first_name", required, placeholder = "Student First Name">
+        Student LA ID: <input type="text" name="student_laid" id = "student_laid" required placeholder = "Student First Name">
         <br>
         <br>
-        Student Last Name: <input type="text" name="student_last_name" id = "student_last_name", required, placeholder = "Student Last Name">
+        Student First Name: <input type="text" name="student_first_name" id = "student_first_name" required placeholder = "Student First Name">
         <br>
         <br>
-        Student Date of Birth: <input type="date" name="student_dob" id = "student_dob", required, placeholder = "Student Date of Birth">
+        Student Last Name: <input type="text" name="student_last_name" id = "student_last_name" required placeholder = "Student Last Name">
+        <br>
+        <br>
+        Student Date of Birth: <input type="date" name="student_dob" id = "student_dob" required placeholder = "Student Date of Birth">
         <br>  
         <br>
-        Student Email:<input type="email" name="student_email" id = "student_email", required, placeholder = "Student Email Address"> 
+        Student Email:<input type="email" name="student_email" id = "student_email" required placeholder = "Student Email Address"> 
         <br>  
         <br>
-        Student Grad Year: <input type="text" name="student_grad_year" id = "student_grad_year", required, placeholder = "Student Graduation Year"      >
+        Student Grad Year: <input type="text" name="student_grad_year" id = "student_grad_year" required placeholder = "Student Graduation Year"      >
         <br>
         <br>
-        Parent/Guardian First Name: <input type="text" name="parent_first_name" id = "parent_first_name", required, placeholder = "Parent First Name">
+        Parent/Guardian First Name: <input type="text" name="parent_first_name" id = "parent_first_name" required placeholder = "Parent First Name">
         <br>
         <br>
-        Parent/Guardian Last Name: <input type="text" name="parent_last_name" id = "parent_last_name", required, placeholder = "Parent Last Name">
+        Parent/Guardian Last Name: <input type="text" name="parent_last_name" id = "parent_last_name" required placeholder = "Parent Last Name">
         <br>
         <br>
-        Parent/Guardian Email: <input type="email" name="parent_email" id = "parent_email", required, placeholder = "Parent Email Address">
+        Parent/Guardian Email: <input type="email" name="parent_email" id = "parent_email" required placeholder = "Parent Email Address">
         <br>
         <br>
         <h1>Dates</h1>
-        Date of Most Recent 504 Evaluation: <input type="date" name="student_most_recent_eval" id = "student_most_recent_eval", required, placeholder = "Most Recent 504 Evaluation">
+        Date of Most Recent 504 Evaluation: <input type="date" name="student_most_recent_eval" id = "student_most_recent_eval" required placeholder = "Most Recent 504 Evaluation">
         <br>
         <br>
-        Date of Entry to 504 Program:  <input type="date" name="student_entry_to_504_program" id = "student_entry_to_504_program", required, placeholder = "Entry to 504 Program">
+        Date of Entry to 504 Program:  <input type="date" name="student_entry_to_504_program" id = "student_entry_to_504_program" required placeholder = "Entry to 504 Program">
         <br>
         <br>
-        Date of Next Scheduled Meeting:  <input type="date" name="next_meeting_date" id = "next_meeting_date", required, placeholder = "Upcoming Scheduled Meeting Date">
+        Date of Next Scheduled Meeting:  <input type="date" name="next_meeting_date" id = "next_meeting_date" required placeholder = "Upcoming Scheduled Meeting Date">
         <br>
         <br>
-        Time of Next Scheduled Meeting:  <input type="time" name="next_meeting_time" id = "next_meeting_time", required, placeholder = "Upcoming Scheduled Meeitng Time">
+        Time of Next Scheduled Meeting:  <input type="time" name="next_meeting_time" id = "next_meeting_time" required placeholder = "Upcoming Scheduled Meeitng Time">
         <br>
         <br>
 
         <h2>Documentation</h2>
-        Date of most recent documentation from Qualified Professional: <input type="date" name="date_of_most_recent_dianosis_paperwork" id = "date_of_most_recent_dianosis_paperwork", required, placeholder = "Date of Most Recent Diangnosis Paperwork">
+        Date of most recent documentation from Qualified Professional: <input type="date" name="date_of_most_recent_dianosis_paperwork" id = "date_of_most_recent_dianosis_paperwork" required  placeholder = "Date of Most Recent Diangnosis Paperwork">
         <br>
         <br>
-        Name and Title of Qualified Professional: <input type="text" name="name_and_title_of_qual_prof" id = "name_and_title_of_qual_prof", required, placeholder = "Name and Title">
+        Name and Title of Qualified Professional: <input type="text" name="name_and_title_of_qual_prof" id = "name_and_title_of_qual_prof" required placeholder = "Name and Title">
         <br>
         <br>
-        Diagnosis: <input type="text" name="diagnosis" id = "diagnosis", required, placeholder = "Diagnosis">
+        Diagnosis: <input type="text" name="diagnosis" id = "diagnosis" required placeholder = "Diagnosis">
 
     <h2>Select Accommodations the Student is Eligible For:</h2>
-            <input type = "checkbox" name = "accomm1" value="accomm1">Accommodation 1</option>
+            <input type = "checkbox" name = "accomms" value="accomm1">Accommodation 1</option>
             <br>
-            <input type = "checkbox" name = "accomm2" value="accomm2">Accommodation 2</option>
+            <input type = "checkbox" name = "accomms" value="accomm2">Accommodation 2</option>
             <br>
-            <input type = "checkbox" name = "accomm3" value="accomm3">Accommodation 3</option>
+            <input type = "checkbox" name = "accomms" value="accomm3">Accommodation 3</option>
             <br>
-    Other: <input type="text" name="additional_accomms" id = "additional_accomms", required, placeholder = "Other">
+    Other: <input type="text" name="additional_accomms" id = "additional_accomms" placeholder = "Other">
 
     <h2>Courses Where the Plan will be Implemented</h2>
-            <input type = "checkbox" name = "eng_elig" value="eng_elig">English</option>
+            <input type = "checkbox" name = "course_elig" value="eng_elig">English</option>
             <br>
-            <input type = "checkbox" name = "math_elig" value="math_elig">Math</option>
+            <input type = "checkbox" name = "course_elig" value="math_elig">Math</option>
             <br>
-            <input type = "checkbox" name = "sci_elig" value="sci_elig">Science</option>
+            <input type = "checkbox" name = "course_elig" value="sci_elig">Science</option>
             <br>
-            <input type = "checkbox" name = "socstud_elig" value="socstud_elig">Social Studies</option>
+            <input type = "checkbox" name = "course_elig" value="socstud_elig">Social Studies</option>
             <br>
-            <input type = "checkbox" name = "wl_elig" value="wl_elig">World Language</option>
+            <input type = "checkbox" name = "course_elig" value="wl_elig">World Language</option>
             <br>
-            Other: <input type="text" name="additional_elig" id = "additional_elig", required, placeholder = "Other">
+            Other: <input type="text" name="other_course_elig" id = "other_course_elig" placeholder = "Other">
             
     <h2>Teachers</h2>
 
+    <fieldset>
+        <legend>Select Student's Teachers</legend>
+        {% for teacher in teachers %}
+            <label>
+                <input type="checkbox" name="teachers" value="{{ teacher.teacher_email }}">
+                {{ teacher.full_name }}
+            </label><br>
+        {% endfor %}
+    </fieldset>
+
     <h2>Meeting attendees</h2>
 
+    <h2>504 Status</h2>
+    <label for="status504">Status:</label>
+    <select name="status504" id="status504" required>
+    <option value="" disabled selected>Select Status</option>
+    <option value="Eligible">Eligible</option>
+    <option value="In Evaluation">In Evaluation</option>
+    <option value="Ineligible">Ineligible</option>
+    </select>
+    <br>
+    <br>
+
+    <button type = "submit">Submit Student Data</button>
+
     </form>
+    </body>
+
+    <script>
+        document.getElementById('annualRenewalForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const accommodations = [];
+            document.querySelectorAll('input[name="accomms"]:checked').forEach(cb => {
+            accommodations.push(cb.value);
+            });
+            const otherAccomms = document.getElementById('additional_accomms').value.trim();
+
+            if (otherAccomms !== "") {
+            accommodations.push(otherAccomms);
+            }
+
+            const courses = [];
+            document.querySelectorAll('input[name="course_elig"]:checked').forEach(cb => {
+            courses.push(cb.value);
+            });
+            const otherCourses = document.getElementById('other_course_elig').value.trim();
+
+            if (otherCourses !== "") {
+            courses.push(otherCourses);
+            }
+
+
+            const teachers = [];
+            document.querySelectorAll('input[name="teachers"]:checked').forEach(cb=>{
+                teachers.push(cb.value);
+            });
+
+            const meetingAttendees = [];
+
+
+            const studentData = {
+                laid : document.getElementById('student_laid').value,
+                first_name : document.getElementById('student_first_name').value,
+                last_name : document.getElementById('student_last_name').value,
+                dob : document.getElementById('student_dob').value,
+                student_email : document.getElementById('student_email').value,
+                student_grad_year : document.getElementById('student_grad_year').value,
+                parent_first_name : document.getElementById('parent_first_name').value,
+                parent_last_name : document.getElementById('parent_last_name').value,
+                parent_email : document.getElementById('parent_email').value,
+                most_recent_504_evaluation : document.getElementById('student_most_recent_eval').value,
+                entry_to_504_program : document.getElementById('student_entry_to_504_program').value,
+                upcoming_meeting_date : document.getElementById('next_meeting_date').value,
+                upcoming_meeting_time : document.getElementById('next_meeting_time').value,
+                date_of_most_recent_documentation_from_qual_prof : document.getElementById('date_of_most_recent_dianosis_paperwork').value,
+                name_and_title_of_qual_prof : document.getElementById('name_and_title_of_qual_prof').value,
+                diagnosis : document.getElementById('diagnosis').value,
+                accommodations : accommodations,
+                course : courses,
+                teachers : teachers,
+                upcoming_meeting_attendees : meetingAttendees,
+                status504 : document.getElementById('status504').value
+            };
+            fetch('/save_student',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(studentData)
+            })
+            .then(response => response.json())
+            .then(data=>{
+                alert(data.message)
+            })
+            .catch(error=>console.error('Error', error));
+        });
+    </script>
 
 
 </html>

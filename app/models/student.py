@@ -21,3 +21,6 @@ class Student:
         self.teachers = teachers
         self.upcoming_meeting_attendees = upcoming_meetings_attendees
         self.status504 = status504
+
+    def to_dict(self):
+        return self.__dict__
