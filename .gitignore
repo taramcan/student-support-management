@@ -1,0 +1,14 @@
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Firebase secret key
+app/config/student-support-tracker-firebase-adminsdk-fbsvc-e321329916.json
+
+
+# Ignore VS Code settings
+.vscode/
