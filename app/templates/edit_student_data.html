@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Edit Student Information</title>
+    </head>
+
+    <body>
+
+        <h1>Edit Student Information</h1>
+
+
+<form id="UpdateStudentInfo">
+<h1>Update Student Demographics</h1>
+        Student LA ID: <input type="text" name="student_laid" id = "student_laid" required placeholder = "Student First Name">
+        <br><br>
+        Student First Name: <input type="text" name="student_first_name" id = "student_first_name" required placeholder = "Student First Name">
+        <br><br>
+        Student Last Name: <input type="text" name="student_last_name" id = "student_last_name" required placeholder = "Student Last Name">
+        <br><br>
+        Student Date of Birth: <input type="date" name="student_dob" id = "student_dob" required placeholder = "Student Date of Birth">
+        <br><br>
+        Student Email:<input type="email" name="student_email" id = "student_email" required placeholder = "Student Email Address"> 
+        <br><br>
+        Student Grad Year: <input type="text" name="student_grad_year" id = "student_grad_year" required placeholder = "Student Graduation Year"      >
+        <br><br>
+        Parent/Guardian First Name: <input type="text" name="parent_first_name" id = "parent_first_name" required placeholder = "Parent First Name">
+        <br><br>
+        Parent/Guardian Last Name: <input type="text" name="parent_last_name" id = "parent_last_name" required placeholder = "Parent Last Name">
+        <br><br>
+        Parent/Guardian Email: <input type="email" name="parent_email" id = "parent_email" required placeholder = "Parent Email Address">
+        <br><br>
+    <h1>504 Plan Dates</h1>
+        Date of Most Recent 504 Evaluation: <input type="date" name="student_most_recent_eval" id = "student_most_recent_eval" required placeholder = "Most Recent 504 Evaluation">
+        <br><br>
+        Date of Entry to 504 Program:  <input type="date" name="student_entry_to_504_program" id = "student_entry_to_504_program" required placeholder = "Entry to 504 Program">
+        <br><br>
+    <h2>504 Plan Documentation</h2>
+        Date of most recent documentation from Qualified Professional: <input type="date" name="date_of_most_recent_dianosis_paperwork" id = "date_of_most_recent_dianosis_paperwork" required  placeholder = "Date of Most Recent Diangnosis Paperwork">
+        <br><br>
+        Name and Title of Qualified Professional: <input type="text" name="name_and_title_of_qual_prof" id = "name_and_title_of_qual_prof" required placeholder = "Name and Title">
+        <br><br>
+        Diagnosis: <input type="text" name="diagnosis" id = "diagnosis" required placeholder = "Diagnosis">
+
+    <h2>Select Accommodations the Student is Eligible For:</h2>
+            <input type = "checkbox" name = "accomms" value="accomm1">Accommodation 1</option>
+            <br>
+            <input type = "checkbox" name = "accomms" value="accomm2">Accommodation 2</option>
+            <br>
+            <input type = "checkbox" name = "accomms" value="accomm3">Accommodation 3</option>
+            <br>
+            Other: <input type="text" name="additional_accomms" id = "additional_accomms" placeholder = "Other">
+
+
+    <h2>504 Status</h2>
+    <label for="status504">Status:</label>
+    <select name="status504" id="status504" required>
+    <option value="" disabled selected>Select Status</option>
+    <option value="Eligible">Eligible</option>
+    <option value="In Evaluation">In Evaluation</option>
+    <option value="Ineligible">Ineligible</option>
+    </select>
+    </form>
+
+    </body>
+</html>
+
+
+<script>
+       document.getElementById('UpdateStudentInfo').addEventListener('submit', function(e){
+            e.preventDefault();
+            const accommodations = [];
+            document.querySelectorAll('input[name="accomms"]:checked').forEach(cb => {
+            accommodations.push(cb.value);
+            });
+            const otherAccomms = document.getElementById('additional_accomms').value.trim();
+
+            if (otherAccomms !== "") {
+            accommodations.push(otherAccomms);
+            }
+
+            const studentData = {
+                laid : document.getElementById('student_laid').value,
+                first_name : document.getElementById('student_first_name').value,
+                last_name : document.getElementById('student_last_name').value,
+                dob : document.getElementById('student_dob').value,
+                student_email : document.getElementById('student_email').value,
+                student_grad_year : document.getElementById('student_grad_year').value,
+                parent_first_name : document.getElementById('parent_first_name').value,
+                parent_last_name : document.getElementById('parent_last_name').value,
+                parent_email : document.getElementById('parent_email').value,
+                most_recent_504_evaluation : document.getElementById('student_most_recent_eval').value,
+                entry_to_504_program : document.getElementById('student_entry_to_504_program').value,
+                upcoming_meeting_date : document.getElementById('next_meeting_date').value,
+                upcoming_meeting_time : document.getElementById('next_meeting_time').value,
+                date_of_most_recent_documentation_from_qual_prof : document.getElementById('date_of_most_recent_dianosis_paperwork').value,
+                name_and_title_of_qual_prof : document.getElementById('name_and_title_of_qual_prof').value,
+                diagnosis : document.getElementById('diagnosis').value,
+                accommodations : accommodations,
+                course : courses,
+                teachers : teachers,
+                upcoming_meeting_attendees : meetingAttendees,
+                status504 : document.getElementById('status504').value
+            };
+            fetch('/save_student',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(studentData)
+            })
+            .then(response => response.json())
+            .then(data=>{
+                alert(data.message)
+            })
+            .catch(error=>console.error('Error', error));
+        });
+</script>

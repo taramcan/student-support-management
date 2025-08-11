@@ -2,75 +2,46 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>504 Renewal</title>
+        <title>504 Annual Renewal</title>
     </head>
 
     <body>
-    <h1>504 Renewal</h1>
+    <h1>504 Annual Renewal</h1>
 
-    <form id="annualRenewalForm">
+    <h1>Search for a Student by ID</h1>
+    <form method="POST" action="/annual_renewal">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id">
+        <button type="submit">Search</button>
+    </form>
 
-    <h1>Student Demographics</h1>
-        Student LA ID: <input type="text" name="student_laid" id = "student_laid" required placeholder = "Student First Name">
-        <br>
-        <br>
-        Student First Name: <input type="text" name="student_first_name" id = "student_first_name" required placeholder = "Student First Name">
-        <br>
-        <br>
-        Student Last Name: <input type="text" name="student_last_name" id = "student_last_name" required placeholder = "Student Last Name">
-        <br>
-        <br>
-        Student Date of Birth: <input type="date" name="student_dob" id = "student_dob" required placeholder = "Student Date of Birth">
-        <br>  
-        <br>
-        Student Email:<input type="email" name="student_email" id = "student_email" required placeholder = "Student Email Address"> 
-        <br>  
-        <br>
-        Student Grad Year: <input type="text" name="student_grad_year" id = "student_grad_year" required placeholder = "Student Graduation Year"      >
-        <br>
-        <br>
-        Parent/Guardian First Name: <input type="text" name="parent_first_name" id = "parent_first_name" required placeholder = "Parent First Name">
-        <br>
-        <br>
-        Parent/Guardian Last Name: <input type="text" name="parent_last_name" id = "parent_last_name" required placeholder = "Parent Last Name">
-        <br>
-        <br>
-        Parent/Guardian Email: <input type="email" name="parent_email" id = "parent_email" required placeholder = "Parent Email Address">
-        <br>
-        <br>
-        <h1>Dates</h1>
-        Date of Most Recent 504 Evaluation: <input type="date" name="student_most_recent_eval" id = "student_most_recent_eval" required placeholder = "Most Recent 504 Evaluation">
-        <br>
-        <br>
-        Date of Entry to 504 Program:  <input type="date" name="student_entry_to_504_program" id = "student_entry_to_504_program" required placeholder = "Entry to 504 Program">
-        <br>
-        <br>
-        Date of Next Scheduled Meeting:  <input type="date" name="next_meeting_date" id = "next_meeting_date" required placeholder = "Upcoming Scheduled Meeting Date">
-        <br>
-        <br>
-        Time of Next Scheduled Meeting:  <input type="time" name="next_meeting_time" id = "next_meeting_time" required placeholder = "Upcoming Scheduled Meeitng Time">
-        <br>
-        <br>
+    {% if student_data %}
+        {% if student_data == "No student found with that ID." %}
+            <p>{{ student_data }}</p>
+        {% else %}
+            <h2>Student Details:</h2>
+            <p>Name: {{ student_data.first_name }} {{ student_data.last_name}}</p>
+            <p>LA ID: {{ student_data.laid }}</p>
+            <p>Date of Birth: {{ student_data.dob }}</p>
+            <p>Year of Graduation: {{ student_data.student_grad_year }}</p>
+            <h2>Parent Details:</h2>
+            <p>Parent Name: {{ student_data.parent_first_name }} {{ student_data.parent_last_name}}</p>
+            <p>Parent Email: {{ student_data.parent_email }}</p>
+            <h2>504 Plan Details</h2>
+            <p>Date of Most Recent 504 Evaluation: {{ student_data.most_recent_504_evaluation
+ }}</p>
+             <p>Name and Title of Qualified Professional: {{ student_data.name_and_title_of_qual_prof
+ }}</p>
+            <p>Diagnosis: {{ student_data.diagnosis }}</p>
+            <p>Accommodations: {{ student_data.accommodations }}</p>
 
-        <h2>Documentation</h2>
-        Date of most recent documentation from Qualified Professional: <input type="date" name="date_of_most_recent_dianosis_paperwork" id = "date_of_most_recent_dianosis_paperwork" required  placeholder = "Date of Most Recent Diangnosis Paperwork">
-        <br>
-        <br>
-        Name and Title of Qualified Professional: <input type="text" name="name_and_title_of_qual_prof" id = "name_and_title_of_qual_prof" required placeholder = "Name and Title">
-        <br>
-        <br>
-        Diagnosis: <input type="text" name="diagnosis" id = "diagnosis" required placeholder = "Diagnosis">
+            <a href="{{ url_for('main.edit_student_data') }}">Edit Student Data</a>
 
-    <h2>Select Accommodations the Student is Eligible For:</h2>
-            <input type = "checkbox" name = "accomms" value="accomm1">Accommodation 1</option>
-            <br>
-            <input type = "checkbox" name = "accomms" value="accomm2">Accommodation 2</option>
-            <br>
-            <input type = "checkbox" name = "accomms" value="accomm3">Accommodation 3</option>
-            <br>
-    Other: <input type="text" name="additional_accomms" id = "additional_accomms" placeholder = "Other">
 
-    <h2>Courses Where the Plan will be Implemented</h2>
+
+ 
+                 <form id="annualRenewalForm">
+    <h2>Courses Where the Plan will be Implemented (Update for Annual Renewal)</h2>
             <input type = "checkbox" name = "course_elig" value="eng_elig">English</option>
             <br>
             <input type = "checkbox" name = "course_elig" value="math_elig">Math</option>
@@ -83,8 +54,8 @@
             <br>
             Other: <input type="text" name="other_course_elig" id = "other_course_elig" placeholder = "Other">
             
-    <h2>Teachers</h2>
-
+    <h2>Teachers (Update for Annual Renewal)</h2>
+        
     <fieldset>
         <legend>Select Student's Teachers</legend>
         {% for teacher in teachers %}
@@ -95,78 +66,107 @@
         {% endfor %}
     </fieldset>
 
-    <h2>Meeting attendees</h2>
+    <h2>Meeting attendees (Update for Annual Renewal)</h2>
+        Parent:
+        <br><br>
+        Student:
+        <br><br>
+        Administrator
+        <label for="admin_meeting_attendee">Choose an option:</label>
+        <select id="admin_meeting_attendee" name="admin_meeting_attendee">
+            <option value="option1">Dr. McManus-Thomas</option>
+            <option value="option2">Amanda Morehouse</option>
+            <option value="option3">Chanelle Smith</option>
+        </select>
+        <br><br>
+        Academic Counselor
+        <label for="couns_meeting_attendee">Choose an option:</label>
+        <select id="couns_meeting_attendee" name="couns_meeting_attendee">
+            <option value="option1">Allison Bruno</option>
+            <option value="option2">Margaret Foley</option>
+            <option value="option3">Kate Massey</option>
+            <option value="option4">Tami Wilson</option>
+        </select>
+        <br><br>
+        Teacher 1
+            <select id="teacherDropdown">
+                <option>Select the First Teacher</option>
+                <!-- Options will be populated here -->
 
-    <h2>504 Status</h2>
-    <label for="status504">Status:</label>
-    <select name="status504" id="status504" required>
-    <option value="" disabled selected>Select Status</option>
-    <option value="Eligible">Eligible</option>
-    <option value="In Evaluation">In Evaluation</option>
-    <option value="Ineligible">Ineligible</option>
-    </select>
-    <br>
-    <br>
-
-    <button type = "submit">Submit Student Data</button>
-
+            </select>
+        <br><br>
+        Teacher 2
+            <select id="teacherDropdown">
+                <option>Select the Second Teacher</option>
+                <!-- Options will be populated here -->
+            </select>
+        <br><br>
+        Other attendees            
+            <input type = "checkbox" name = "opt_meeting_attendee" value="opt_meeting_attendee">Parent</option>
+            <br><br>
+            <input type = "checkbox" name = "opt_meeting_attendee" value="opt_meeting_attendee">Student</option>
+            <br><br>
+            <input type = "checkbox" name = "opt_meeting_attendee" value="opt_meeting_attendee">Nurse</option>
+            <br><br>
+            <input type = "checkbox" name = "opt_meeting_attendee" value="opt_meeting_attendee">Testing Coordinator</option>
+            <br><br>
+            Other: <input type="text" name="opt_meeting_attendee" id = "opt_meeting_attendee" placeholder = "Other">
+            <br><br>
+        
+        Date of Next Scheduled Meeting:  <input type="date" name="next_meeting_date" id = "next_meeting_date" required placeholder = "Upcoming Scheduled Meeting Date">
+        <br><br>
+        Time of Next Scheduled Meeting:  <input type="time" name="next_meeting_time" id = "next_meeting_time" required placeholder = "Upcoming Scheduled Meeitng Time">
+        <br><br>
     </form>
+        {% endif %}
+    {% endif %}
     </body>
 
     <script>
+        var laid = "{{ student_data.laid }}";
+        var first_name = "{{ student_data.student_first_name}}";
+        var last_name = "{{ student_data.student_last_name}}";
+        var dob = "{{ student_data.student_dob}}";
+        var student_email = "{{ student_data.student_email}}";
+        var student_grad_year = "{{ student_data.student_grad_year}}";
+        var parent_first_name = "{{ student_data.parent_first_name}}";
+        var parent_last_name = "{{ student_data.parent_last_name}}";
+        var parent_email = "{{ student_data.parent_email}}";
+        var most_recent_504_evaluation = "{{ student_data.student_most_recent_eval}}";
+        var entry_to_504_program = "{{ student_data.student_entry_to_504_program}}";
+        var upcoming_meeting_date = "{{ student_data.next_meeting_date}}";
+        var upcoming_meeting_time = "{{ student_data.next_meeting_time}}";
+        var date_of_most_recent_documentation_from_qual_prof = "{{ student_data.date_of_most_recent_dianosis_paperwork}}";
+        var name_and_title_of_qual_prof = "{{ student_data.name_and_title_of_qual_prof}}";
+        var diagnosis = "{{ student_data.diagnosis}}";
+        var accommodations = "{{ student_data.accommodations}}";
+        
+        
         document.getElementById('annualRenewalForm').addEventListener('submit', function(e){
-            e.preventDefault();
-            const accommodations = [];
-            document.querySelectorAll('input[name="accomms"]:checked').forEach(cb => {
-            accommodations.push(cb.value);
-            });
-            const otherAccomms = document.getElementById('additional_accomms').value.trim();
-
-            if (otherAccomms !== "") {
-            accommodations.push(otherAccomms);
-            }
-
-            const courses = [];
-            document.querySelectorAll('input[name="course_elig"]:checked').forEach(cb => {
-            courses.push(cb.value);
-            });
-            const otherCourses = document.getElementById('other_course_elig').value.trim();
-
-            if (otherCourses !== "") {
-            courses.push(otherCourses);
-            }
-
-
-            const teachers = [];
-            document.querySelectorAll('input[name="teachers"]:checked').forEach(cb=>{
-                teachers.push(cb.value);
-            });
-
-            const meetingAttendees = [];
 
 
             const studentData = {
-                laid : document.getElementById('student_laid').value,
-                first_name : document.getElementById('student_first_name').value,
-                last_name : document.getElementById('student_last_name').value,
-                dob : document.getElementById('student_dob').value,
-                student_email : document.getElementById('student_email').value,
-                student_grad_year : document.getElementById('student_grad_year').value,
-                parent_first_name : document.getElementById('parent_first_name').value,
-                parent_last_name : document.getElementById('parent_last_name').value,
-                parent_email : document.getElementById('parent_email').value,
-                most_recent_504_evaluation : document.getElementById('student_most_recent_eval').value,
-                entry_to_504_program : document.getElementById('student_entry_to_504_program').value,
-                upcoming_meeting_date : document.getElementById('next_meeting_date').value,
-                upcoming_meeting_time : document.getElementById('next_meeting_time').value,
-                date_of_most_recent_documentation_from_qual_prof : document.getElementById('date_of_most_recent_dianosis_paperwork').value,
-                name_and_title_of_qual_prof : document.getElementById('name_and_title_of_qual_prof').value,
-                diagnosis : document.getElementById('diagnosis').value,
+                laid : laid,
+                first_name : first_name,
+                last_name : last_name,
+                dob : dob,
+                student_email : student_email,
+                student_grad_year : student_grad_year,
+                parent_first_name : parent_first_name,
+                parent_last_name : parent_first_name,
+                parent_email : parent_email,
+                most_recent_504_evaluation : most_recent_504_evaluation,
+                entry_to_504_program : entry_to_504_program,
+                upcoming_meeting_date : upcoming_meeting_date,
+                upcoming_meeting_time : upcoming_meeting_time,
+                date_of_most_recent_documentation_from_qual_prof : date_of_most_recent_documentation_from_qual_prof,
+                name_and_title_of_qual_prof : name_and_title_of_qual_prof,
+                diagnosis : diagnosis,
                 accommodations : accommodations,
                 course : courses,
                 teachers : teachers,
                 upcoming_meeting_attendees : meetingAttendees,
-                status504 : document.getElementById('status504').value
+                status504 : status504
             };
             fetch('/save_student',{
                 method: 'POST',

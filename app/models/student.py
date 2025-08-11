@@ -1,5 +1,5 @@
 class Student:
-    def __init__(self,laid, first_name, last_name, dob, student_email, student_grad_year, parent_first_name, parent_last_name, parent_email, most_recent_504_evaluation, entry_to_504_program, upcoming_meeting_date, upcoming_meeting_time,  date_of_most_recent_documentation_from_qual_prof,  name_and_title_of_qual_prof,diagnosis, accommodations, courses, teachers, upcoming_meetings_attendees, status504):
+    def __init__(self,laid, first_name, last_name, dob, student_email, student_grad_year, parent_first_name, parent_last_name, parent_email, most_recent_504_evaluation, entry_to_504_program, upcoming_meeting_date, upcoming_meeting_time, date_of_most_recent_documentation_from_qual_prof,  name_and_title_of_qual_prof,diagnosis, accommodations, courses, teachers, upcoming_meetings_attendees, status504):
         self.laid = laid
         self.first_name = first_name
         self.last_name = last_name
